@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("registration-form");
   const nameInput = document.getElementById("name");
   const emailInput = document.getElementById("email");
-  const confirmEmailInput = document.getElementById("confirm-email");
   const passwordInput = document.getElementById("password");
+  const confirmPasswordInput = document.getElementById("confirm-password");
   const privacyCheckbox = document.getElementById("privacy-policy");
   const termsCheckbox = document.getElementById("terms-conditions");
   const registerButton = document.getElementById("register-button");
@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
     validatePasswordLive(this.value);
   });
 
-  // Email matching validation
-  confirmEmailInput.addEventListener("input", function () {
-    if (this.value !== emailInput.value) {
-      document.getElementById("confirm-email-error").textContent =
-        "Le email non corrispondono";
-      document.getElementById("confirm-email-error").style.display = "block";
+  // Password matching validation
+  confirmPasswordInput.addEventListener("input", function () {
+    if (this.value !== passwordInput.value) {
+      document.getElementById("confirm-password-error").textContent =
+        "Le password non corrispondono";
+      document.getElementById("confirm-password-error").style.display = "block";
     } else {
-      document.getElementById("confirm-email-error").style.display = "none";
+      document.getElementById("confirm-password-error").style.display = "none";
     }
   });
 
@@ -196,14 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
       isValid = false;
     }
 
-    // Validate email confirmation
-    if (confirmEmailInput.value !== emailInput.value) {
-      document.getElementById("confirm-email-error").textContent =
-        "Le email non corrispondono";
-      document.getElementById("confirm-email-error").style.display = "block";
-      isValid = false;
-    }
-
     // Validate password
     const passwordErrors = validatePassword(passwordInput.value);
     if (passwordErrors.length > 0) {
@@ -211,6 +203,14 @@ document.addEventListener("DOMContentLoaded", function () {
         .map((error) => `<div>${error}</div>`)
         .join("");
       document.getElementById("password-error").style.display = "block";
+      isValid = false;
+    }
+
+    // Validate password confirmation
+    if (confirmPasswordInput.value !== passwordInput.value) {
+      document.getElementById("confirm-password-error").textContent =
+        "Le password non corrispondono";
+      document.getElementById("confirm-password-error").style.display = "block";
       isValid = false;
     }
 
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
         submissionStatus.className = "submission-status success";
 
         // Reset form after successful submission
-        // form.reset();
+        form.reset();
       }, 2000);
     }
   });
