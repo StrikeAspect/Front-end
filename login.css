@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #defdff;;
+    background-color: #D8F3DC; /* Updated background color */
     margin: 0;
     padding: 0;
     display: flex;
@@ -35,8 +35,10 @@ main {
 
 .login-container {
     background-color: white;
+    color: #081C15; 
+    font-weight: bold;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
     margin: auto;
@@ -59,19 +61,31 @@ input {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
+    border-radius: 5px;
+
+    color: #081C15; 
+    border: 1px solid #52B788; /* Match border color */
+    background-color: #F9F9F9; /* Match background color */
+}
+
+input:focus {
+    outline: none;
+    border-color: #40916C; /* Match focus border color */
+    background-color: #FFFFFF; /* Match focus background color */
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background-color: #007BFF;
+    background-color: #52B788; /* Updated button color before hover */
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #40916C; /* Updated button color after hover */
 }
 
 a {
