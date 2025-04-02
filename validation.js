@@ -116,10 +116,53 @@ document.addEventListener("DOMContentLoaded", function () {
       strengthMeter.className = "password-strength-meter weak";
     }
   }
+  // Prevent spaces in the password input
+  passwordInput.addEventListener("input", function () {
+    this.value = this.value.replace(/\s/g, ""); // Remove spaces
+    validatePasswordLive(this.value); // Re-validate password
+  });
+
+  // Replace the email input event handler with this improved version
+  emailInput.addEventListener("keydown", function (e) {
+    // Prevent space key from being entered at all
+    if (e.key === " " || e.keyCode === 32) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Still handle paste events to remove any spaces
+  emailInput.addEventListener("paste", function (e) {
+    // Small delay to let the paste complete
+    setTimeout(() => {
+      if (this.value.includes(" ")) {
+        const cursorPosition = this.selectionStart;
+        const originalValue = this.value;
+        const newValue = originalValue.replace(/\s/g, "");
+
+        this.value = newValue;
+
+        // Adjust cursor position
+        const spacesRemoved =
+          originalValue.slice(0, cursorPosition).length -
+          newValue.slice(0, cursorPosition).length;
+        this.setSelectionRange(
+          cursorPosition - spacesRemoved,
+          cursorPosition - spacesRemoved
+        );
+      }
+
+      validateEmail(this.value);
+    }, 0);
+  });
 
   // Email validation
   function validateEmail(email) {
     if (!email) return "L'email è obbligatoria";
+
+    if (email.includes(" ")) {
+      return "L'email non può contenere spazi";
+    }
 
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regex.test(email)) {
@@ -137,6 +180,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Password validation
   function validatePassword(password) {
     const errors = [];
+
+    if (password.includes(" ")) {
+      errors.push("La password non può contenere spazi");
+    }
 
     if (password.length < 8) {
       errors.push("Minimo 8 caratteri");
@@ -269,4 +316,43 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 2000);
     }
   });
+
+  // Add password toggle functionality
+  function setupPasswordToggle(passwordField, confirmPasswordField) {
+    // Create and add toggle buttons for both password fields
+    const fields = [
+      { input: passwordField, container: passwordField.parentNode },
+      {
+        input: confirmPasswordField,
+        container: confirmPasswordField.parentNode,
+      },
+    ];
+
+    fields.forEach((field) => {
+      // Create toggle button
+      const toggleBtn = document.createElement("button");
+      toggleBtn.type = "button";
+      toggleBtn.className = "password-toggle";
+      toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
+      toggleBtn.title = "Mostra/nascondi password";
+
+      // Add toggle button to DOM
+      field.container.style.position = "relative";
+      field.container.appendChild(toggleBtn);
+
+      // Add click event
+      toggleBtn.addEventListener("click", function () {
+        if (field.input.type === "password") {
+          field.input.type = "text";
+          toggleBtn.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+          field.input.type = "password";
+          toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
+        }
+      });
+    });
+  }
+
+  // Initialize password toggles
+  setupPasswordToggle(passwordInput, confirmPasswordInput);
 });

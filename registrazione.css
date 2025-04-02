@@ -1,173 +1,210 @@
 /* Body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #d8f3dc; /* Background color */
-    color: #081c15; /* Font color */
-    margin: 0;
-    padding: 20px 0; /* Add vertical padding to prevent touching the top and bottom */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ensure the body takes the full height of the viewport */
-    box-sizing: border-box; /* Include padding in height calculations */
+  font-family: Arial, sans-serif;
+  background-color: #d8f3dc; /* Background color */
+  color: #081c15; /* Font color */
+  margin: 0;
+  padding: 20px 0; /* Add vertical padding to prevent touching the top and bottom */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+  box-sizing: border-box; /* Include padding in height calculations */
 }
 
 /* Registration container */
 .registration-container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px; /* Adjust padding for better spacing */
-    width: 100%;
-    max-width: 500px; /* Increased width */
-    margin: auto; /* Center horizontally */
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px; /* Adjust padding for better spacing */
+  width: 100%;
+  max-width: 500px; /* Increased width */
+  margin: auto; /* Center horizontally */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 /* Form heading */
 .registration-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #081c15;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #081c15;
 }
 
 /* Form group styling */
 .form-group {
-    margin-bottom: 15px;
-    text-align: left; /* Ensure labels and inputs are aligned to the left */
+  margin-bottom: 15px;
+  text-align: left; /* Ensure labels and inputs are aligned to the left */
+  position: relative;
 }
 
 /* Label styling */
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #081c15;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #081c15;
 }
 
 /* Input fields */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #52b788;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #081c15;
-    background-color: #f9f9f9;
-    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #52b788;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #081c15;
+  background-color: #f9f9f9;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 /* Add space under password field */
 .form-group input[type="password"] {
-    margin-bottom: 10px; /* Additional space under password field */
+  margin-bottom: 10px; /* Additional space under password field */
 }
 
 /* Input focus styling */
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
 .form-group input[type="password"]:focus {
-    outline: none;
-    border-color: #40916c;
-    background-color: #ffffff;
+  outline: none;
+  border-color: #40916c;
+  background-color: #ffffff;
 }
 
 /* Checkbox styling */
 .form-group.checkbox {
-    display: flex; /* Arrange items in a row */
-    align-items: center; /* Center vertically all items */
-    gap: 5px; /* Uniform space between items */
+  display: flex; /* Arrange items in a row */
+  align-items: center; /* Center vertically all items */
+  gap: 5px; /* Uniform space between items */
 }
 
 /* Checkbox input */
 .form-group.checkbox input[type="checkbox"] {
-    margin: 0; /* Remove extra margins */
+  margin: 0; /* Remove extra margins */
 }
 
 /* Checkbox label */
 .form-group.checkbox label {
-    font-size: 14px;
-    color: #081c15;
-    margin: 0; /* Remove extra margins */
+  font-size: 14px;
+  color: #081c15;
+  margin: 0; /* Remove extra margins */
 }
 
 /* Error message styling for checkbox */
 .form-group.checkbox .error-message {
-    font-size: 12px;
-    color: #f44336;
-    margin: 0; /* Remove extra margins */
-    line-height: 1.4; /* Adjust line height to align with text */
+  font-size: 12px;
+  color: #f44336;
+  margin: 0; /* Remove extra margins */
+  line-height: 1.4; /* Adjust line height to align with text */
 }
 
 /* Links */
 .form-group a {
-    color: #52b788;
-    text-decoration: none;
+  color: #52b788;
+  text-decoration: none;
 }
 
 .form-group a:hover {
-    color: #40916c;
-    text-decoration: underline;
+  color: #40916c;
+  text-decoration: underline;
 }
 
 /* Button styling */
 button[type="submit"] {
-    width: 100%;
-    padding: 10px 15px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #52b788;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #52b788;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #40916c;
+  background-color: #40916c;
 }
 
 /* Error message styling */
 .error-message {
-    color: #f44336;
-    font-size: 12px;
-    margin-top: 5px;
-    display: none;
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
 }
 
 /* Password requirements */
 .requirement {
-    font-size: 14px;
-    margin: 3px 0;
-    color: #666;
-    opacity: 0.5; /* Less opacity for unfulfilled requirements */
-    transition: opacity 0.3s ease;
+  font-size: 14px;
+  margin: 3px 0;
+  color: #666;
+  opacity: 0.5; /* Less opacity for unfulfilled requirements */
+  transition: opacity 0.3s ease;
 }
 
 .requirement.fulfilled {
-    color: #4caf50;
-    opacity: 1; /* Fully visible when fulfilled */
+  color: #4caf50;
+  opacity: 1; /* Fully visible when fulfilled */
 }
 
 /* Turnstile */
 .cf-turnstile {
-    display: block;
-    margin-top: 10px;
+  display: block;
+  margin-top: 10px;
 }
 
 /* Center the reCAPTCHA widget */
 .g-recaptcha {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
 }
 
 /* Error message styling for reCAPTCHA */
 #captcha-error {
-    color: #f44336;
-    font-size: 12px;
-    margin-top: 5px;
-    display: none;
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 2px; /* Adjust these values for better positioning */
+  top: 28px; /* osition relative to label + input */
+  transform: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  padding: 0;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; 
+}
+
+.password-toggle:hover {
+  opacity: 1;
+}
+
+.password-toggle.visible {
+  opacity: 1;
+  color: #4285f4;
+}
+
+/* Adjust input padding to prevent text overlapping with icon */
+#password,
+#confirm-password {
+  padding-right: 40px;
 }
