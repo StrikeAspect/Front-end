@@ -1,47 +1,60 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #d8f3dc; /* Cambiato il colore di sfondo */
-    color: #081c15; /* Cambiato il colore del font */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #d8f3dc; /* Cambiato il colore di sfondo */
+  color: #081c15; /* Cambiato il colore del font */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .activation-container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    text-align: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
 }
 
 h2 {
-    margin: 0;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #081c15; /* Cambiato il colore del font */
+  margin: 0;
+  font-size: 24px; /* Ensure consistent heading size */
+  margin-bottom: 20px;
+  color: #081c15; /* Cambiato il colore del font */
 }
 
 p {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #081c15; /* Cambiato il colore del font */
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #081c15; /* Cambiato il colore del font */
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #52b788; /* Cambiato il colore di sfondo del bottone */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 10px 15px; /* Adjust padding for consistency */
+  font-size: 16px; /* Ensure consistent font size */
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #52b788; /* Cambiato il colore di sfondo del bottone */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #40916c; /* Cambiato il colore di sfondo al passaggio del mouse */
+  background-color: #40916c; /* Cambiato il colore di sfondo al passaggio del mouse */
+}
+
+/* Add logo styling */
+.logo-container {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.logo {
+  max-width: 50px;
+  max-height: 50px;
+  height: auto;
+  object-fit: contain;
 }

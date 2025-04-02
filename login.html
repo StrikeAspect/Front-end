@@ -1,29 +1,63 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="login.css">
-</head>
-<body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="login-form">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Inserisci il tuo username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Inserisci la tua password" required>
-            </div>
-            <button type="submit">Accedi</button>
-            <p>Non hai un account? <a href="registrazione.html">Registrati</a></p>
-            <p><a href="forgot-password.html">Hai dimenticato la password?</a></p>
-        </form>
-    </div>
 
-    <script src="auth.js"></script>
-</body>
+    <!-- Link al file CSS -->
+    <link rel="stylesheet" href="login.css" />
+
+    <!-- Font Awesome per l'eye toggle -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- JavaScript per validazioni -->
+    <script src="login.js" defer></script>
+  </head>
+
+  <body>
+    <div class="login-container">
+      <div class="logo-container">
+        <img src="Asset_1.png" alt="Logo" class="logo" />
+      </div>
+      <h2>Login</h2>
+      <!-- rest of your form remains the same -->
+      <form id="login-form">
+        <!-- Username -->
+        <div class="form-group">
+          <label for="username">Indirizzo Email</label>
+          <input
+            type="email"
+            id="username"
+            name="username"
+            placeholder="Inserisci il tuo username"
+          />
+          <div id="username-error" class="error-message"></div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Inserisci la tua password"
+          />
+          <div id="password-error" class="error-message"></div>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit">Accedi</button>
+        <div id="form-error" class="error-message"></div>
+
+        <!-- Link per registrazione o recupero password -->
+        <p>Non hai un account? <a href="registrazione.html">Registrati</a></p>
+        <p><a href="password.html">Hai dimenticato la password?</a></p>
+      </form>
+    </div>
+  </body>
 </html>

@@ -24,11 +24,23 @@ body {
   box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
+/* Add logo styling */
+.logo-container {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.logo {
+  max-width: 50px;
+  height: 50px;
+}
+
 /* Form heading */
 .registration-container h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #081c15;
+  font-size: 24px; /* Ensure consistent heading size */
 }
 
 /* Form group styling */
@@ -116,7 +128,7 @@ body {
 button[type="submit"] {
   width: 100%;
   padding: 10px 15px;
-  font-size: 16px;
+  font-size: 16px; /* Ensure consistent font size */
   font-weight: bold;
   color: #ffffff;
   background-color: #52b788;
@@ -191,7 +203,7 @@ button[type="submit"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10; 
+  z-index: 10;
 }
 
 .password-toggle:hover {
@@ -200,11 +212,19 @@ button[type="submit"]:hover {
 
 .password-toggle.visible {
   opacity: 1;
-  color: #4285f4;
 }
 
 /* Adjust input padding to prevent text overlapping with icon */
 #password,
 #confirm-password {
   padding-right: 40px;
+}
+a {
+  color: #52b788;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #40916c;
+  text-decoration: underline;
 }

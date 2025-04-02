@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conferma Email</title>
+
+    <!-- CSS Stile -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #d8f3dc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #081c15;
+      }
+
+      .confirmation-container {
+        text-align: center;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+      }
+
+      /* Add logo styling */
+      .logo-container {
+        text-align: center;
+        margin-bottom: 5px;
+      }
+
+      .logo {
+        max-width: 50px;
+        max-height: 50px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      h2 {
+        color: #081c15;
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+
+      p {
+        color: #333333;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 16px; /* Ensure consistent font size */
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #52b788;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #40916c;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="confirmation-container">
+      <!-- Add logo -->
+      <div class="logo-container">
+        <img src="Asset_1.png" alt="Logo" class="logo">
+      </div>
+      
+      <h2>Conferma la tua email</h2>
+      <p>
+        Abbiamo inviato un'email al tuo indirizzo. Controlla la tua casella di
+        posta per confermare e completare l'operazione.
+      </p>
+      <p>Se non vedi l'email, controlla nella tua cartella spam.</p>
+      <button onclick="window.location.href='login.html'">
+        Torna alla Home
+      </button>
+    </div>
+  </body>
+</html>
