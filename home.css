@@ -185,12 +185,15 @@ h1 {
 
 /* Transaction cards */
 .transactions {
+    justify-content: space-around;
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     gap: 1rem;
 }
 
 .transaction-card {
+    width: 45%;
     display: flex;
     align-items: center;
     background-color: #fff;
@@ -261,6 +264,8 @@ h1 {
     height: 100%;
     width: 0%; /* Empieza en 0% */
     border-radius: 0.2rem;
+    transition: width 0.3s ease;
+    position: relative;
 }
 
 .progress.negative, .progress.positive {
