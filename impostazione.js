@@ -61,3 +61,46 @@ document
     event.preventDefault(); // Prevent default button behavior
     window.location.href = "password.html"; // Redirect to password.html
   });
+document.addEventListener("DOMContentLoaded", function () {
+  // Get modal elements
+  const modal = document.getElementById("tfa-modal");
+  const enableBtn = document.getElementById("enable-2fa-btn");
+  const closeModal = document.querySelector(".close-modal");
+  const verifyBtn = document.getElementById("verify-code-btn");
+  // Show modal when Enable 2FA button is clicked
+  enableBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    modal.style.display = "flex";
+    // Here you would typically make an API call to get a QR code
+    // For demo purposes, we'll just show a placeholder
+    document.getElementById("qr-code").innerHTML =
+      "In a real app, a QR code image would appear here";
+  });
+  // Close modal when X is clicked
+  closeModal.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+  // Close modal when clicking outside
+  window.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+  // Handle verification
+  verifyBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    const code = document.getElementById("verification-code").value.trim();
+    const errorMsg = document.getElementById("verification-error");
+    if (!code || code.length !== 6 || !/^\d+$/.test(code)) {
+      errorMsg.style.display = "block";
+      return;
+    }
+    errorMsg.style.display = "none";
+    // Here you would verify the code with your server
+    // For demo, we'll simulate success
+    alert("2FA enabled successfully!");
+    modal.style.display = "none";
+    enableBtn.textContent = "Disable 2FA";
+    enableBtn.style.backgroundColor = "#f44336";
+  });
+});

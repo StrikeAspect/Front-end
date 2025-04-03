@@ -5,231 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impostazioni Utente</title>
     <script src="impostazione.js" defer></script>
-
-    <style>
-      /* Body styling */
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #d8f3dc;
-        color: #081c15;
-        margin: 0;
-        padding: 20px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        box-sizing: border-box;
-      }
-
-      /* Container styling */
-      .container {
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-        width: 100%;
-        max-width: 500px;
-        margin: auto;
-        box-sizing: border-box;
-      }
-
-      /* Logo styling */
-      .logo-container {
-        text-align: center;
-        margin-bottom: 3px;
-      }
-
-      .logo {
-        max-width: 50px;
-        height: 50px;
-      }
-
-      /* Header styling */
-      .header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-
-      .header img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        margin-right: 15px;
-      }
-
-      .header h2 {
-        margin: 0;
-        font-size: 18px;
-        color: #081c15;
-      }
-
-      .header p {
-        margin: 0;
-        font-size: 14px;
-        color: gray;
-      }
-
-      /* Form styling */
-      .form {
-        margin-bottom: 15px;
-        text-align: left;
-        position: relative;
-      }
-
-      .form label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #081c15;
-      }
-
-      input[type="text"],
-      input[type="email"],
-      select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #52b788;
-        border-radius: 5px;
-        font-size: 14px;
-        color: #081c15;
-        background-color: #f9f9f9;
-        box-sizing: border-box;
-      }
-
-      input[type="text"]:focus,
-      input[type="email"]:focus,
-      select:focus {
-        outline: none;
-        border-color: #40916c;
-        background-color: #ffffff;
-      }
-
-      /* Add spacing between form elements */
-      .form label,
-      .form input,
-      .form select,
-      .form button {
-        margin-bottom: 15px;
-        display: block;
-      }
-
-      /* Button styling */
-      .change-btn {
-        background-color: #52b788;
-        color: white;
-        padding: 8px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .change-btn:hover {
-        background-color: #40916c;
-      }
-
-      /* Links */
-      .link {
-        color: #52b788;
-        text-decoration: none;
-      }
-
-      .link:hover {
-        color: #40916c;
-        text-decoration: underline;
-      }
-
-      /* Error message styling */
-      .error-message {
-        color: #f44336;
-        font-size: 12px;
-        margin-top: 5px;
-        display: none;
-      }
-
-      /* Apply consistent label styling */
-      .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #081c15;
-      }
-
-      /* Add spacing between labels and input fields */
-      .form-group {
-        margin-bottom: 15px;
-      }
-
-      /* Modal styles */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        align-items: center;
-        justify-content: center;
-      }
-
-      .modal-content {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        max-width: 400px;
-        width: 90%;
-        position: relative;
-      }
-
-      .close-modal {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        font-size: 22px;
-        cursor: pointer;
-        color: #999;
-      }
-
-      .close-modal:hover {
-        color: #000;
-      }
-
-      .qr-code-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-        padding: 20px;
-        border: 1px dashed #ddd;
-        background-color: #f9f9f9;
-      }
-
-      #qr-code {
-        width: 180px;
-        height: 180px;
-        background-color: #f0f0f0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        color: #666;
-      }
-
-      .verification-container {
-        margin-top: 15px;
-      }
-
-      .verification-container input {
-        margin-bottom: 10px;
-      }
-
-      .verification-container button {
-        width: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="impostazione.css" />
   </head>
   <body>
     <div class="container">
@@ -272,6 +48,11 @@
         </div>
 
         <div class="form-group">
+          <label for="2fa">Two-Factor Authentication</label>
+          <button id="enable-2fa-btn" class="change-btn">Enable 2FA</button>
+        </div>
+
+        <div class="form-group">
           <label for="password">Password</label>
           <button id="change-password-btn" class="change-btn">
             Change Password
@@ -282,8 +63,7 @@
           <label for="timezone">Time Zone</label>
           <select id="timezone">
             <option selected>America - Los Angeles</option>
-            <option>America - New York</option>
-            <option>Europe - London</option>
+            <option>America - New York</option>            <option>Europe - London</option>
             <option>Europe - Paris</option>
             <option>Europe - Berlin</option>
             <option>Europe - Rome</option>
@@ -311,8 +91,7 @@
         </div>
 
         <div class="form-group">
-          <label for="currency">Currency</label>
-          <select id="currency">
+          <label for="currency">Currency</label>          <select id="currency">
             <option selected>USD</option>
             <option>EUR</option>
             <option>GBP</option>
@@ -326,7 +105,7 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <div class="form-group">Preferences</label>
           <label for="notification">Notification Preferences</label>
           <select id="notification">
             <option selected>Email</option>
@@ -334,11 +113,6 @@
             <option>Push Notifications</option>
             <option>In-App Notifications</option>
           </select>
-        </div>
-
-        <div class="form-group">
-          <label for="2fa">Two-Factor Authentication</label>
-          <button id="enable-2fa-btn" class="change-btn">Enable 2FA</button>
         </div>
 
         <button id="save-changes-btn" class="change-btn">Save Changes</button>
@@ -380,53 +154,4 @@
         </div>
       </div>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Get modal elements
-        const modal = document.getElementById("tfa-modal");
-        const enableBtn = document.getElementById("enable-2fa-btn");
-        const closeModal = document.querySelector(".close-modal");
-        const verifyBtn = document.getElementById("verify-code-btn");
-        // Show modal when Enable 2FA button is clicked
-        enableBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          modal.style.display = "flex";
-          // Here you would typically make an API call to get a QR code
-          // For demo purposes, we'll just show a placeholder
-          document.getElementById("qr-code").innerHTML =
-            "In a real app, a QR code image would appear here";
-        });
-        // Close modal when X is clicked
-        closeModal.addEventListener("click", function () {
-          modal.style.display = "none";
-        });
-        // Close modal when clicking outside
-        window.addEventListener("click", function (e) {
-          if (e.target === modal) {
-            modal.style.display = "none";
-          }
-        });
-        // Handle verification
-        verifyBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          const code = document
-            .getElementById("verification-code")
-            .value.trim();
-          const errorMsg = document.getElementById("verification-error");
-          if (!code || code.length !== 6 || !/^\d+$/.test(code)) {
-            errorMsg.style.display = "block";
-            return;
-          }
-          errorMsg.style.display = "none";
-          // Here you would verify the code with your server
-          // For demo, we'll simulate success
-          alert("2FA enabled successfully!");
-          modal.style.display = "none";
-          enableBtn.textContent = "Disable 2FA";
-          enableBtn.style.backgroundColor = "#f44336";
-        });
-      });
-    </script>
-  </body>
 </html>
