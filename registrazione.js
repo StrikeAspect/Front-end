@@ -349,6 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
           field.input.type = "password";
           toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
         }
+        
       });
     });
   }
@@ -356,3 +357,22 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize password toggles
   setupPasswordToggle(passwordInput, confirmPasswordInput);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const registrationForm = document.getElementById("registration-form");
+
+  registrationForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // Blocca l'invio del form per eseguire logica personalizzata
+
+    // Simula una registrazione con successo (logica del server qui)
+    const isRegistrationSuccessful = true;
+
+    if (isRegistrationSuccessful) {
+      window.location.href = "after.html";
+    } else {
+      // Mostra errori, se necessario
+      alert("Registrazione fallita. Riprova.");
+    }
+  });
+});
+

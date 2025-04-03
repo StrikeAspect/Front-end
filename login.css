@@ -1,101 +1,157 @@
+/* Stile generale della pagina */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #D8F3DC; /* Updated background color */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #d8f3dc;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-}
-
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-header nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-main {
-    flex: 1;
-    padding: 20px;
-}
-
+/* Container del login */
 .login-container {
-    background-color: white;
-    color: #081C15; 
-    font-weight: bold;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin: auto;
+  background-color: white;
+  color: #081c15;
+  font-weight: bold;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+/* Add logo styling */
+.logo-container {
+  text-align: center;
+  margin-bottom: 5px; /* Reduced margin */
 }
 
+.logo {
+  max-width: 50px; /* Smaller size */
+  max-height:50px;
+  height: auto;
+  object-fit: contain; /* Maintains aspect ratio */
+}
+
+/* Titolo */
 h2 {
-    text-align: center;
+  text-align: center;
+  font-size: 24px;
+  color: #081c15;
+  margin-bottom: 20px;
 }
 
+/* Gruppo form */
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
+/* Label */
 label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #081c15;
 }
 
+/* Input generico */
 input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border-radius: 5px;
-
-    color: #081C15; 
-    border: 1px solid #52B788; /* Match border color */
-    background-color: #F9F9F9; /* Match background color */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #52b788;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #081c15;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
 }
 
+/* Focus sugli input */
 input:focus {
-    outline: none;
-    border-color: #40916C; /* Match focus border color */
-    background-color: #FFFFFF; /* Match focus background color */
+  outline: none;
+  border-color: #40916c;
+  background-color: #ffffff;
 }
 
+/* Pulsante di invio */
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #52B788; /* Updated button color before hover */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #52b788;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #40916C; /* Updated button color after hover */
+  background-color: #40916c;
 }
 
+/* Password toggle - consolidated styles */
+button.password-toggle {
+  position: absolute;
+  right: 2px; /* Adjust these values for better positioning */
+  top: 28px; /* osition relative to label + input */
+  transform: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  padding: 0;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+button.password-toggle:hover {
+  opacity: 1;
+}
+
+button.password-toggle.visible {
+  opacity: 1;
+  color: #4285f4;
+}
+
+/*Make sure the icon displays properly */
+button.password-toggle i {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Link */
 a {
-    text-decoration: none;
-    color: #007BFF;
+  color: #52b788;
+  text-decoration: none;
+  font-weight: normal;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
+a:hover {
+  color: #40916c;
+  text-decoration: underline;
+}
+
+/* Messaggi di errore */
+.error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+/* Spazio per toggle */
+input[type="password"] {
+  padding-right: 40px;
 }
