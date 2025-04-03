@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2FA Verification</title>
+    <style>
+        /* Styling for 2FA page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d8f3dc; /* Match other pages */
+    color: #081c15;
+    margin: 0;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px; /* Match other forms */
+    box-sizing: border-box;
+}
+
+        /* Logo styling */
+        .logo-container {
+    text-align: center;
+margin-bottom: 5px;
+        }
+
+        .logo {
+            max-width: 40px;
+            max-height: 40px;
+            height: auto;
+            object-fit: contain;
+}
+
+h1 {
+    font-size: 24px;
+    color: #081c15;
+    margin-bottom: 20px;
+text-align: center;
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #081c15;
+text-align: left;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #52b788;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #081c15;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #40916c;
+    background-color: #ffffff;
+}
+
+button {
+    background-color: #52b788;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #40916c;
+}
+
+.help-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+text-align: center;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+<!-- Add logo -->
+        <div class="logo-container">
+            <img src="Asset_1.png" alt="Logo" class="logo">
+        </div>
+        
+        <h1>Two-Factor Authentication</h1>
+        <p class="description">Please enter the 6-digit code from your authenticator app to complete login</p>
+        
+    <div class="form-group">
+    <label for="login-code">Authentication Code</label>
+    <input type="text" id="login-code" placeholder="Enter 6-digit code" maxlength="6">
+<div id="code-error" class="error-message">Please enter a valid code</div>
+            
+    <button id="login-btn">Verify</button>
+</div>
+
+</div>
+<script>
+    document.getElementById("login-btn").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        const codeInput = document.getElementById("login-code");
+        const code = codeInput.value.trim();
+        const errorMsg = document.getElementById("code-error");
+
+        // Basic validation
+        if (!code || code.length !== 6 || !/^\d+$/.test(code)) {
+            errorMsg.style.display = "block";
+            return;
+        }
+
+        errorMsg.style.display = "none";
+
+        // Send the code to the server for verification
+        fetch('/verify-2fa', { // Replace '/verify-2fa' with your actual API endpoint
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // You might need to include an authentication token here, e.g.,
+                // 'Authorization': 'Bearer your_token_here'
+            },
+            body: JSON.stringify({ code: code })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                // Verification successful, redirect to the dashboard or next page
+                alert("Verification successful!");
+                window.location.href = "dashboard.html"; // Replace with your dashboard URL
+            } else {
+                // Verification failed, display an error message
+                errorMsg.textContent = data.message || "Invalid code. Please try again.";
+                errorMsg.style.display = "block";
+            }
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            errorMsg.textContent = "An error occurred. Please try again later.";
+            errorMsg.style.display = "block";
+        });
+    });
+</script>
+
+</body>
+</html>
+ 

@@ -18,6 +18,12 @@ function saveChanges() {
   const email = document.getElementById("email").value;
   const oldEmail = localStorage.getItem("userEmail"); // Get stored original email
 
+  // Check if the name and email fields are not empty
+  if (!fullName || !email) {
+    alert("Please fill out all fields.");
+    return;
+  }
+
   // Update the header dynamically
   document.querySelector(".header h2").textContent = fullName;
   document.querySelector(".header p").textContent = email;
@@ -50,7 +56,7 @@ document
 
 // Fix the event listener for the "Change Password" button
 document
-  .querySelector(".change-btn")
+  .getElementById("change-password-btn")
   .addEventListener("click", function (event) {
     event.preventDefault(); // Prevent default button behavior
     window.location.href = "password.html"; // Redirect to password.html
