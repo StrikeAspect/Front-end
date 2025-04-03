@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea Reminder</title>
+    <link rel="stylesheet" href="reminder.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="Asset_1.png" alt="Logo" class="logo">
+        </div>
+        <h2>Crea Reminder</h2>
+        <form id="reminderForm">
+            <div class="form-group">
+                <label for="title">Titolo del reminder</label>
+                <input type="text" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="number">Quantità</label>
+                <input type="number" id="number" required min="0">
+            </div>
+            <div class="form-group">
+                <div class="radio-group">
+                    <label><input type="radio" name="transactionType" value="Entrate" required> Entrate</label>
+                    <label><input type="radio" name="transactionType" value="Uscite"> Uscite</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date">Giorno - Mese - Orario</label>
+                <input type="datetime-local" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="frequency">Ricorrenza</label>
+                <select id="frequency" required>
+                    <option value="daily">Giorno</option>
+                    <option value="weekly">Settimana</option>
+                    <option value="monthly">Mese</option>
+                    <option value="yearly">Anno</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="paymentType">Tipo di pagamento</label>
+                <select id="paymentType">
+                    <option value="Bonifico">Bonifico</option>
+                    <option value="Paypal">Paypal</option>
+                    <option value="GooglePay">Google Pay</option>
+                    <option value="ApplePay">Apple Pay</option>
+                    <option value="CartaDiCredito">Carta Di Credito</option>
+                    <option value="CartaDiDebito">Carta Di Debito</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="description">Descrizione</label>
+                <input type="text" id="title">
+            </div>
+            <button type="submit">Aggiungi</button>
+        </form>
+    </div>
+    <script src="reminder.js"></script>
+</body>
+</html>
