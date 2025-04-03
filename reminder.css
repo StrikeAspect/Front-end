@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d8f3dc; /* Background color */
+    color: #081c15; /* Font color */
+    margin: 0;
+    padding: 20px 0; /* Add vertical padding to prevent touching the top and bottom */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+    box-sizing: border-box; /* Include padding in height calculations */
+  }
+
+.container {
+    background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px; /* Adjust padding for better spacing */
+  width: 100%;
+  max-width: 500px; /* Increased width */
+  margin: auto; /* Center horizontally */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #081c15;
+    font-size: 24px; /* Ensure consistent heading size */
+  }
+
+  .logo-container {
+    text-align: center;
+    margin-bottom: 3px;
+  }
+  
+  .logo {
+    max-width: 50px;
+  height: 50px;
+  }
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Ensure labels and inputs are aligned to the left */
+    position: relative;
+  }
+  
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #081c15;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group input[type="datetime-local"],
+  #frequency, #paymentType 
+    {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #52b788;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #081c15;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  }
+
+  .form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="datetime-local"]:focus,
+#frequency, #paymentType 
+{
+  outline: none;
+  border-color: #40916c;
+  background-color: #ffffff;
+}
+
+/* Added styles for radio buttons */
+.form-group .radio-group {
+    display: flex; /* Arrange items in a row */
+  align-items: center; /* Center vertically all items */
+  gap: 5px; /* Uniform space between items */
+}
+
+.form-group .radio-group label {
+    font-size: 14px;
+    color: #081c15;
+    margin: 0; /* Remove extra margins */
+}
+
+.form-group .radio-group input[type="radio"] {
+    width: auto;
+    height: auto;
+    margin: 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px; /* Ensure consistent font size */
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #52b788;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #40916c;
+  }
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px 15px; /* Adjust padding for consistency */
+    font-size: 16px; /* Ensure consistent font size */
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #52b788;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #40916c;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        margin: 10px 0;
+    }
+
+    .menu {
+        margin: 5px 0;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    button {
+        margin-top: 15px;
+    }
+}

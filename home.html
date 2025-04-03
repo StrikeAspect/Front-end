@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movimenti App</title>
+    <link rel="stylesheet" href="home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="home.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <div class="logo-container">
+            <img class="logo" src="/Asset 1.png" alt="" />
+            <p>Pay<span>Alert</span></h2>
+        </div>
+        <div>
+          <h1>MOVIMENTI</h1>
+        </div>
+      </header>
+
+      <div class="content-wrapper">
+        <!-- Area filtri a sinistra -->
+        <div class="filter-sidebar">
+          <div class="filter-header">
+            <h3>Filtri</h3>
+            <span class="close-filters"><i class="fas fa-times"></i></span>
+          </div>
+
+          <div class="filter-group">
+                <div class="filter-title">
+                    <p>Attivo</p>
+                </div>
+                <div class="filter-title">
+                    <p>Pausa</p>
+                </div><div class="filter-title">
+                    <p>Sospeso</p>
+                </div><div class="filter-title">
+                    <p>Tipologia di pagamento</p>
+                </div>   
+          </div>
+
+          <!-- <button class="apply-filters">Applica filtri</button> -->
+        </div>
+
+        <!-- Contenuto principale -->
+        <div class="content-area">
+          <div class="toolbar">
+            <div class="filter-icon"><i class="fas fa-filter"></i></div>
+            <div class="action-icons">
+              <i class="fas fa-columns"></i>
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+
+          <div class="transactions">
+            <div class="transaction-card negative " data-status="pending">
+              <div class="status-indicator">
+                <div class="dot green"></div>
+              </div>
+              <div><img class="logo-pay" src="/IconPay/wire-transfer.png" alt=""></div>
+              <div class="transaction-details">
+                <div class="person">Maria Cercado</div>
+                <div class="description">Descrizione...</div>
+                    <div class="progress-bar" id="timeProgressBar">
+                        <div class="progress negative"></div>
+                    </div>
+              </div>
+              <div class="amount negative">-19.00€</div>
+            </div>
+
+            <div class="transaction-card positive" data-status="pending">
+              <div class="status-indicator">
+                <div class="dot green"></div>
+              </div>
+              <div><img class="logo-pay" src="/IconPay/paypal.png" alt=""></div>
+              <div class="transaction-details">
+                <div class="person">Marco rossi</div>
+                <div class="description">Descrizione...</div>
+                <div class="progress-bar">
+                  <div class="progress positive"></div>
+                </div>
+              </div>
+              <div class="amount positive">+30.00€</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="add-button">
+        <a href="/login.html"><i class="fas fa-plus"></i></a>
+      </div>
+    </div>
+
+    <script>
+      // Toggle dei filtri su mobile
+      document
+        .querySelector(".filter-icon")
+        .addEventListener("click", function () {
+          document.querySelector(".filter-sidebar").classList.add("active");
+          document.body.classList.add("filter-open");
+        });
+
+      document
+        .querySelector(".close-filters")
+        .addEventListener("click", function () {
+          document.querySelector(".filter-sidebar").classList.remove("active");
+          document.body.classList.remove("filter-open");
+        });
+    </script>
+  </body>
+</html>
