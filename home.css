@@ -1,0 +1,348 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    overflow-x: hidden; /* Previene lo scroll orizzontale quando i filtri sono aperti */
+}
+
+body.filter-open {
+    overflow: hidden; /* Blocca lo scroll quando i filtri sono attivi su mobile */
+}
+
+.app-container {
+    position: relative;
+    max-width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Header styles */
+header {
+    padding: 1rem;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    flex-direction: row;
+}
+
+.logo-container p {
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+    color: #1b4332;
+}
+
+.logo-container p span {
+    color: #52b788;
+}
+
+.logo {
+    width: 50px;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Layout wrapper */
+.content-wrapper {
+    display: flex;
+    position: relative;
+}
+
+/* Filter sidebar */
+.filter-sidebar {
+    background-color: white;
+    width: 280px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -290px; /* Nascosto di default su mobile */
+    z-index: 1000;
+    transition: left 0.3s ease;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.filter-sidebar.active {
+    left: 0; /* Mostrato quando attivo */
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.filter-header h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.close-filters {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+.filter-group p {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.filter-option input {
+    margin-right: 0.5rem;
+}
+
+.filter-option label {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.apply-filters {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.apply-filters:hover {
+    background-color: #0d8aee;
+}
+
+/* Content area with curved background */
+.content-area {
+    flex: 1;
+    background-color: #e0f5e0;
+    border-radius: 2rem 2rem 0 0;
+    min-height: calc(100vh - 7rem);
+    padding: 2rem;
+    position: relative;
+    width: 100%;
+}
+
+/* Toolbar section */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.filter-icon, .action-icons {
+    font-size: 1.2rem;
+    color: #444;
+    cursor: pointer;
+}
+
+.action-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Transaction cards */
+.transactions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.transaction-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-pay{
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+}
+
+.transaction-card.negative {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.transaction-card:hover {
+    transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-card.positive {
+    background-color: #b366ff;
+    color: white;
+}
+
+.status-indicator {
+    margin-right: 0.8rem;
+}
+
+.dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+}
+
+.dot.green {
+    background-color: #00ff00;
+}
+
+.transaction-details {
+    flex: 1;
+}
+
+.person {
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+.description {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 0.4rem;
+    width: 100%;
+    border-radius: 0.2rem;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%; /* Empieza en 0% */
+    border-radius: 0.2rem;
+}
+
+.progress.negative, .progress.positive {
+    background-color: #fff;
+    transition: width 0.5s ease-out;
+    /* animation: progressAnimation 1s linear infinite; */
+}
+
+
+
+/* @keyframes progressAnimation {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+} */
+
+.amount {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: auto;
+    padding-left: 1rem;
+}
+
+/* Add button */
+.add-button {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Desktop layout adjustments */
+@media all and (min-width: 768px) {
+    .app-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 2rem;
+    }
+    
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        margin: 0 2rem 2rem;
+    }
+    
+    .filter-sidebar {
+        position: relative;
+        left: 0;
+        width: 260px;
+        flex-shrink: 0;
+        margin-right: 1.5rem;
+        height: auto;
+        border-radius: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .close-filters {
+        display: none; /* Nascondi pulsante di chiusura su desktop */
+    }
+    
+    .content-area {
+        flex: 1;
+        border-radius
