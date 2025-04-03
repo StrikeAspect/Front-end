@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impostazioni Utente</title>
+    <style>
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d8f3dc;
+            color: #081c15;
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Container styling */
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+        /* Logo styling */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 3px;
+        }
+
+        .logo {
+            max-width: 50px;
+            height: 50px;
+        }
+
+        /* Header styling */
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #081c15;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 14px;
+            color: gray;
+        }
+
+        /* Form styling */
+        .form {
+            margin-bottom: 15px;
+            text-align: left;
+            position: relative;
+        }
+
+        .form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #081c15;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #52b788;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #081c15;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #40916c;
+            background-color: #ffffff;
+        }
+
+        /* Add spacing between form elements */
+        .form label, .form input, .form select, .form button {
+            margin-bottom: 15px;
+            display: block;
+        }
+
+               /* Button styling */
+        .change-btn {
+            background-color: #52B788;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .change-btn:hover {
+            background-color: #40916C;
+        }
+
+        /* Links */
+        .link {
+            color: #52b788;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            color: #40916c;
+            text-decoration: underline;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #f44336;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Apply consistent label styling */
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #081c15;
+        }
+
+        /* Add spacing between labels and input fields */
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Asset_1.png" class="logo" alt="Logo" style="width: 50px; display: block; margin: 0 auto 20px;">
+        <div class="header">
+            <img src="PHOTO-2025-04-03-15-55-25.jpg" alt="Profile" style="width: 60px; height: 60px;">
+            <div>
+                <h2>Alissa ST</h2>
+                <p>alissa@looker.com</p>
+            </div>
+        </div>
+        <form action="form">
+            <div class="form-group">
+                <label for="full-name">Nome Completo</label>
+                <input type="text" id="full-name" value="Alissa ST" placeholder="Inserisci il tuo nome completo">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" value="alissa@looker.com" placeholder="Inserisci la tua email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <button id="change-password-btn" class="change-btn">Change Password</button>
+            </div>
+
+            <div class="form-group">
+                <label for="timezone">Time Zone</label>
+                <select id="timezone">
+                    <option selected>America - Los Angeles</option>
+                    <option>America - New York</option>
+                    <option>Europe - London</option>
+                    <option>Europe - Paris</option>
+                    <option>Europe - Berlin</option>
+                    <option>Europe - Rome</option>
+                    <option>Asia - Tokyo</option>
+                    <option>Asia - Shanghai</option>
+                    <option>Asia - Singapore</option>
+                    <option>Australia - Sydney</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="language">Language</label>
+                <select id="language">
+                    <option selected>English</option>
+                    <option>Italiano</option>
+                    <option>Français</option>
+                    <option>Deutsch</option>
+                    <option>Español</option>
+                    <option>Português</option>
+                    <option>中文</option>
+                    <option>日本語</option>
+                    <option>한국어</option>
+                    <option>Русский</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                    <option selected>USD</option>
+                    <option>EUR</option>
+                    <option>GBP</option>
+                    <option>JPY</option>
+                    <option>CNY</option>
+                    <option>AUD</option>
+                    <option>CAD</option>
+                    <option>CHF</option>
+                    <option>NZD</option>
+                    <option>SEK</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="notification">Notification Preferences</label>
+                <select id="notification">
+                    <option selected>Email</option>
+                    <option>SMS</option>
+                    <option>Push Notifications</option>
+                    <option>In-App Notifications</option>
+                </select>
+            </div>
+
+            <button id="save-changes-btn" class="change-btn">Save Changes</button>
+                        <p style="margin-top: 20px; font-size: 14px; color: gray;">You can also manage your email preferences and subscriptions.</p>
+        </form>
+    </div>
+    <script src="impostazione.js"></script>
+</body>
+</html>
