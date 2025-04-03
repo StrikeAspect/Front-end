@@ -241,6 +241,54 @@ h1 {
     flex: 1;
 }
 
+/* Stili per il collapse delle card */
+.collapsible-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 100px; /* Altezza massima quando espanso */
+}
+
+.transaction-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.transaction-card.collapsed .collapsible-content {
+    max-height: 0;
+}
+
+/* Indicatore visivo per lo stato collapsed/expanded */
+.transaction-card::after {
+    content: "\f077"; /* Icona chevron-up di FontAwesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.transaction-card.collapsed::after {
+    transform: rotate(180deg);
+}
+
+/* Modifica l'altezza della card quando collassata */
+.transaction-card.collapsed {
+    padding: 0.8rem 1rem;
+}
+
+/* Assicurati che la persona rimanga visibile */
+.transaction-card .person {
+    transition: margin-bottom 0.3s ease;
+}
+
+.transaction-card.collapsed .person {
+    margin-bottom: 0;
+}
+
+
 .person {
     font-weight: bold;
     margin-bottom: 0.2rem;
