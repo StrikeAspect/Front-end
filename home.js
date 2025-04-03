@@ -1,75 +1,118 @@
-// Function to set progress based on status
-function updateProgressBars() {
-    // Get all transaction cards
-    const cards = document.querySelectorAll('.transaction-card');
-    
-    cards.forEach(card => {
-        // Get the progress element for this card
-        const progressBar = card.querySelector('.progress');
-        
-        // Get the status of the card (you can define your own status logic)
-        // For example, we'll use a random status value between 0-100 for demonstration
-        let status = Math.floor(Math.random() * 101);
-        
-        // Set the width of the progress bar based on status
-        progressBar.style.width = status + '%';
-        
-        // You can also add the status percentage as text if needed
-        const description = card.querySelector('.description');
-        description.textContent = `Status: ${status}%`;
+// Collegamento Dataset
+
+async function loadTransactions() {
+  try {
+    // Fetch el JSON original
+    const response = await fetch("database.json");
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+    const data = await response.json();
+
+    // Asegurarse de que cada transacción tenga createdAt
+    data.transactions = data.transactions.map((transaction) => {
+      // Si no tiene createdAt, asignar la fecha actual
+      if (!transaction.createdAt) {
+        transaction.createdAt = new Date().toISOString();
+      }
+      return transaction;
     });
+
+    // Ahora puedes usar estos datos con las fechas asignadas
+    displayTransactions(data.transactions);
+  } catch (error) {
+    console.error("Error loading transaction data:", error);
+  }
 }
 
-// Initial update
-updateProgressBars();
-
-// Update every 3 seconds (for demonstration)
-setInterval(updateProgressBars, 3000);
-
-// Define possible card statuses and their corresponding progress values
-const STATUS_MAP = {
-    'pending': 25,
-    'processing': 50, 
-    'completed': 100,
-    'failed': 100  // For failed transactions, show full but with different color
-};
-
-// Function to update progress based on card status
-function updateCardProgress(card, status) {
-    // Get the progress element for this card
-    const progressBar = card.querySelector('.progress');
-    const description = card.querySelector('.description');
+// Función para mostrar las transacciones
+function displayTransactions(transactions) {
+    const container = document.querySelector('.transactions');
+    container.innerHTML = '';
     
-    // Get progress value from status map (default to 0 if status not found)
-    const progressValue = STATUS_MAP[status] || 0;
-    
-    // Update progress bar width
-    progressBar.style.width = progressValue + '%';
-    
-    // Update description text to show status
-    description.textContent = `Status: ${status}`;
-    
-    // For failed status, we can change the color
-    if (status === 'failed' && card.classList.contains('negative')) {
-        progressBar.style.backgroundColor = '#ff3333';
-    } else {
-        progressBar.style.backgroundColor = '#fff';
-    }
-}
-
-
-
-function initProgressBars() {
-    const cards = document.querySelectorAll('.transaction-card');
-    
-    cards.forEach(card => {
-        // Get status from data attribute
-        const status = card.getAttribute('data-status') || 'pending';
-        updateCardProgress(card, status);
+    transactions.forEach(transaction => {
+        const type = transaction.payment_direction === 'to_receive' ? 'positive' : 'negative';
+        const progress = transaction.paid ? 100 : 0;
+        const formattedAmount = (type === 'positive' ? '+' : '-') + transaction.amount + '€';
         
+        const cardHTML = `
+            <div class="transaction-card ${type} collapsed">
+                <div class="status-indicator">
+                    <div class="dot green"></div>
+                </div>
+                <div><img class="logo-pay" src="/IconPay/${transaction.payment_method}.png" alt=""></div>
+                <div class="transaction-details">
+                    <div class="person">${transaction.name}</div>
+                    <div class="collapsible-content">
+                        <div class="description">${transaction.description}</div>
+                        <div class="progress-bar">
+                            <div class="progress ${type}" data-progress="${progress}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="amount ${type}">${formattedAmount}</div>
+            </div>
+        `;
+        
+        container.innerHTML += cardHTML;
     });
+    
+    // Animar barras de progreso
+    setTimeout(() => {
+        document.querySelectorAll('.progress').forEach(bar => {
+            const progress = bar.getAttribute('data-progress');
+            bar.style.width = `${progress}%`;
+        });
+        
+        // Inizializza il collapse
+        setupCardCollapse();
+    }, 100);
 }
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', initProgressBars);
+// Cargar transacciones cuando la página se carga
+document.addEventListener("DOMContentLoaded", loadTransactions);
 
+// Funzione per gestire il collapse delle card
+function setupCardCollapse() {
+  const cards = document.querySelectorAll(".transaction-card");
+
+  // Inizialmente tutte le card sono collapsed
+  cards.forEach((card) => {
+    card.classList.add("collapsed");
+  });
+
+  // Aggiungi event listener per il click su ogni card
+  cards.forEach((card) => {
+    card.addEventListener("click", function (event) {
+      // Previeni il click se è un click su un link o un pulsante all'interno della card
+      if (event.target.closest("a, button")) {
+        return;
+      }
+
+      // Se la card è già espansa, la chiudi semplicemente
+      if (this.classList.contains("expanded")) {
+        this.classList.remove("expanded");
+        this.classList.add("collapsed");
+        return;
+      }
+
+      // Chiudi tutte le altre card
+      cards.forEach((otherCard) => {
+        if (otherCard !== this) {
+          otherCard.classList.remove("expanded");
+          otherCard.classList.add("collapsed");
+        }
+      });
+
+      // Apri questa card
+      this.classList.add("expanded");
+      this.classList.remove("collapsed");
+    });
+  });
+}
+
+// Chiama la funzione dopo aver caricato le transazioni
+document.addEventListener("DOMContentLoaded", () => {
+  loadTransactions().then(() => {
+    setupCardCollapse();
+  });
+});
