@@ -200,6 +200,7 @@ h1 {
     border-radius: 0.8rem;
     padding: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Abilita il posizionamento assoluto degli elementi al suo interno */
 }
 
 .logo-pay{
@@ -263,7 +264,7 @@ h1 {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     position: absolute;
-    right: 10px;
+    right: 10px; /* sposta la freccia in alto a destra */
     top: 10px;
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.7);
@@ -274,9 +275,15 @@ h1 {
     transform: rotate(180deg);
 }
 
+/* Nascondi l'icona quando la card non è collapsed */
+.transaction-card:not(.collapsed)::after {
+    display: none;
+}
+
 /* Modifica l'altezza della card quando collassata */
 .transaction-card.collapsed {
     padding: 0.8rem 1rem;
+    min-height: 4rem; /* aumenta l'altezza minima se necessario */
 }
 
 /* Assicurati che la persona rimanga visibile */
@@ -398,4 +405,41 @@ h1 {
     
     .content-area {
         flex: 1;
-        border-radius
+        border-radius: 2rem 2rem 0 0;
+    }
+}
+
+/* Card actions - versione compatta e in alto a destra */
+.card-actions {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    display: flex;
+    gap: 0.3rem;
+}
+
+/* Inverti la visibilità delle azioni: nascondile quando la card è collapsed */
+.transaction-card.collapsed .card-actions {
+    display: none;
+}
+
+/* Mostra le azioni solo quando la card è espansa */
+.transaction-card:not(.collapsed) .card-actions {
+    display: flex;
+}
+
+.delete-btn, .edit-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+.delete-btn:hover, .edit-btn:hover {
+    transform: scale(1.1);
+}

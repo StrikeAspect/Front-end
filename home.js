@@ -50,6 +50,14 @@ function displayTransactions(transactions) {
                     </div>
                 </div>
                 <div class="amount ${type}">${formattedAmount}</div>
+                <div class="card-actions">
+                    <button class="edit-btn" onclick="handleEdit(event)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="delete-btn" onclick="handleDelete(event)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
         `;
         
@@ -66,6 +74,21 @@ function displayTransactions(transactions) {
         // Inizializza il collapse
         setupCardCollapse();
     }, 100);
+}
+
+// Funzione per gestire il pulsante Delete
+function handleDelete(event) {
+    event.stopPropagation();
+    if (confirm("sei sicuro di voler cancellare")) {
+        const card = event.currentTarget.closest('.transaction-card');
+        card.remove();
+    }
+}
+
+// Funzione per gestire il pulsante Edit
+function handleEdit(event) {
+    event.stopPropagation();
+    window.location.href = "edit-transaction.html";
 }
 
 // Cargar transacciones cuando la página se carga
