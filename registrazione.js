@@ -277,17 +277,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Validate captcha
-    const turnstileResponse = document.querySelector(
-      '[name="cf-turnstile-response"]'
-    );
-    if (!turnstileResponse || !turnstileResponse.value) {
-      document.getElementById("captcha-error").textContent =
-        "Completa la verifica captcha";
-      document.getElementById("captcha-error").style.display = "block";
-      isValid = false;
-    }
-
-    // Validate reCAPTCHA
     const recaptchaResponse = grecaptcha.getResponse();
     if (recaptchaResponse.length === 0) {
       document.getElementById("captcha-error").textContent =
@@ -297,7 +286,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       document.getElementById("captcha-error").style.display = "none";
     }
-
     // If form is valid, submit
     if (isValid) {
       // Show loading state
@@ -305,15 +293,52 @@ document.addEventListener("DOMContentLoaded", function () {
       submissionStatus.textContent = "Registrazione in corso...";
       submissionStatus.className = "submission-status loading";
 
-      // Simulate form submission (in real app, this would be an API call)
-      setTimeout(function () {
-        submissionStatus.textContent =
-          "Registrazione completata! Controlla la tua email per verificare l'account.";
-        submissionStatus.className = "submission-status success";
+      // Prepare data for sending
+      const formData = {
+        name: nameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+        recaptchaResponse: recaptchaResponse,
+        turnstileResponse: turnstileResponse.value,
+        privacyPolicy: privacyCheckbox.checked,
+        termsConditions: termsCheckbox.checked,
+      };
 
-        // Reset form after successful submission
-        form.reset();
-      }, 2000);
+      // Send data to backend
+      fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          // Handle successful registration
+          submissionStatus.textContent =
+            "Registrazione completata! Controlla la tua email per verificare l'account.";
+          submissionStatus.className = "submission-status success";
+          form.reset();
+          window.location.href = "after.html";
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error(
+            "There has been a problem with your fetch operation:",
+            error
+          );
+          submissionStatus.textContent =
+            "Errore durante la registrazione. Riprova più tardi.";
+          submissionStatus.className = "submission-status error";
+        })
+        .finally(() => {
+          registerButton.disabled = false;
+        });
     }
   });
 
@@ -349,7 +374,6 @@ document.addEventListener("DOMContentLoaded", function () {
           field.input.type = "password";
           toggleBtn.innerHTML = '<i class="fas fa-eye"></i>';
         }
-        
       });
     });
   }
@@ -357,22 +381,3 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize password toggles
   setupPasswordToggle(passwordInput, confirmPasswordInput);
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  const registrationForm = document.getElementById("registration-form");
-
-  registrationForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // Blocca l'invio del form per eseguire logica personalizzata
-
-    // Simula una registrazione con successo (logica del server qui)
-    const isRegistrationSuccessful = true;
-
-    if (isRegistrationSuccessful) {
-      window.location.href = "after.html";
-    } else {
-      // Mostra errori, se necessario
-      alert("Registrazione fallita. Riprova.");
-    }
-  });
-});
-

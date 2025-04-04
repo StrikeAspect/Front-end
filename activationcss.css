@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #d8f3dc; /* Cambiato il colore di sfondo */
-  color: #081c15; /* Cambiato il colore del font */
+  background-color: #d8f3dc;
+  color: #081c15;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,35 +15,41 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 30px;
   text-align: center;
+  position: relative;
+  display: flex; /* Add flex display */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
 }
 
 h2 {
   margin: 0;
-  font-size: 24px; /* Ensure consistent heading size */
+  font-size: 24px;
   margin-bottom: 20px;
-  color: #081c15; /* Cambiato il colore del font */
+  color: #081c15;
 }
 
 p {
   font-size: 18px;
   margin-bottom: 20px;
-  color: #081c15; /* Cambiato il colore del font */
+  color: #081c15;
 }
 
 button {
-  padding: 10px 15px; /* Adjust padding for consistency */
-  font-size: 16px; /* Ensure consistent font size */
+  padding: 10px 15px;
+  font-size: 16px;
   font-weight: bold;
   color: #ffffff;
-  background-color: #52b788; /* Cambiato il colore di sfondo del bottone */
+  background-color: #52b788;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 20px; /* Add margin to separate from the paragraph */
 }
 
 button:hover {
-  background-color: #40916c; /* Cambiato il colore di sfondo al passaggio del mouse */
+  background-color: #40916c;
 }
 
 /* Add logo styling */
@@ -57,4 +63,14 @@ button:hover {
   max-height: 50px;
   height: auto;
   object-fit: contain;
+}
+
+/* Loading indicator styling */
+#loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: #081c15;
 }

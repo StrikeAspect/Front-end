@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="registrazione.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="registrazione.js" defer></script>
 </head>
 <body>
@@ -15,7 +16,7 @@
             <img src="Asset_1.png" alt="Logo" class="logo">
         </div>
         <h2>Registrazione</h2>
-        <form id="registration-form">
+        <form id="registration-form" action="/api/register" method="POST">
             <!-- Nome completo -->
             <div class="form-group">
                 <label for="name">Nome completo</label>
@@ -75,7 +76,6 @@
                 <div class="g-recaptcha" data-sitekey="6LcE2AErAAAAAP3gXDNOiaf763mm7ogtBGPfL4TX"></div>
                 <div id="captcha-error" class="error-message"></div>
             </div>
-
             <!-- Submit Button -->
             <button type="submit" id="register-button">Registrati</button>
             <div id="submission-status" class="submission-status"></div>

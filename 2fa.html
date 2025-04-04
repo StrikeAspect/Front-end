@@ -154,7 +154,7 @@ text-align: center;
         errorMsg.style.display = "none";
 
         // Send the code to the server for verification
-        fetch('/verify-2fa', { // Replace '/verify-2fa' with your actual API endpoint
+        fetch('/api/verify-2fa', { // Replace '/verify-2fa' with your actual API endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -190,4 +190,3 @@ text-align: center;
 
 </body>
 </html>
- 

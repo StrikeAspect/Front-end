@@ -220,3 +220,10 @@ select:focus {
 .verification-container button {
   width: 100%;
 }
+/* Add styling for the 2FA status message */
+#tfa-status {
+  font-size: 16px;
+  color: #4caf50; /* Green color for success */
+  margin-top: 10px;
+  display: block;
+}

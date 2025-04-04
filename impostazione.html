@@ -22,17 +22,16 @@
           style="width: 60px; height: 60px"
         />
         <div>
-          <h2>Alissa ST</h2>
-          <p>alissa@looker.com</p>
+          <h2 id="user-name"></h2>
+          <p id="user-email"></p>
         </div>
       </div>
-      <form action="form">
+      <form id="settings-form">
         <div class="form-group">
           <label for="full-name">Nome Completo</label>
           <input
             type="text"
             id="full-name"
-            value="Alissa ST"
             placeholder="Inserisci il tuo nome completo"
           />
         </div>
@@ -42,7 +41,6 @@
           <input
             type="email"
             id="email"
-            value="alissa@looker.com"
             placeholder="Inserisci la tua email"
           />
         </div>
@@ -50,6 +48,7 @@
         <div class="form-group">
           <label for="2fa">Two-Factor Authentication</label>
           <button id="enable-2fa-btn" class="change-btn">Enable 2FA</button>
+          <span id="tfa-status" style="display: none;"></span>
         </div>
 
         <div class="form-group">
@@ -63,7 +62,8 @@
           <label for="timezone">Time Zone</label>
           <select id="timezone">
             <option selected>America - Los Angeles</option>
-            <option>America - New York</option>            <option>Europe - London</option>
+            <option>America - New York</option>
+            <option>Europe - London</option>
             <option>Europe - Paris</option>
             <option>Europe - Berlin</option>
             <option>Europe - Rome</option>
@@ -91,7 +91,8 @@
         </div>
 
         <div class="form-group">
-          <label for="currency">Currency</label>          <select id="currency">
+          <label for="currency">Currency</label>
+          <select id="currency">
             <option selected>USD</option>
             <option>EUR</option>
             <option>GBP</option>
@@ -105,7 +106,7 @@
           </select>
         </div>
 
-        <div class="form-group">Preferences</label>
+        <div class="form-group">
           <label for="notification">Notification Preferences</label>
           <select id="notification">
             <option selected>Email</option>
@@ -132,7 +133,7 @@
         </p>
 
         <div class="qr-code-container">
-          <div id="qr-code">QR code will appear here</div>
+          <div id="qr-code"></div>
         </div>
 
         <div class="verification-container">
@@ -154,4 +155,13 @@
         </div>
       </div>
     </div>
+    <div id="otp-result-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-result-modal">&times;</span>
+        <h3 id="otp-result-title"></h3>
+        <p id="otp-result-message"></p>
+        <button id="otp-result-button" class="change-btn"></button>
+      </div>
+    </div>
+  </body>
 </html>

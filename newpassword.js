@@ -1,8 +1,9 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("password-recovery-form");
   const newPasswordInput = document.getElementById("new-password");
   const confirmPasswordInput = document.getElementById("confirm-new-password");
+  const submissionStatus = document.getElementById("submission-status");
+  const passwordStrengthMeter = document.getElementById("password-strength"); // Get the password strength meter element
 
   // Add password toggle functionality
   function setupPasswordToggle(passwordField) {
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     parent.appendChild(toggleBtn);
 
     // Add click event
-    toggleBtn.addEventListener("click", function(e) {
+    toggleBtn.addEventListener("click", function (e) {
       e.preventDefault(); // Prevent form submission
       if (passwordField.type === "password") {
         passwordField.type = "text";
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Funzione per validare la password live
   newPasswordInput.addEventListener("input", function () {
     validatePassword(this.value);
+    updatePasswordStrength(this.value); // Update the password strength meter
   });
 
   // Conferma password
@@ -82,8 +84,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Se tutto è valido, procedi con il reset della password
     if (valid) {
-      alert("Password reimpostata con successo!");
-      form.reset(); // Resetta il modulo
+      // Send the new password to the backend for reset
+      fetch("/api/reset-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ newPassword: newPasswordInput.value }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (data.success) {
+            submissionStatus.textContent = "Password reimpostata con successo!";
+            submissionStatus.style.color = "green";
+            submissionStatus.style.display = "block";
+            form.reset(); // Resetta il modulo
+            // Optionally, redirect to the login page
+            window.location.href = "login.html";
+          } else {
+            submissionStatus.textContent =
+              data.message || "Errore nel reimpostare la password.";
+            submissionStatus.style.color = "red";
+            submissionStatus.style.display = "block";
+          }
+        })
+        .catch((error) => {
+          console.error("Error during password reset:", error);
+          submissionStatus.textContent =
+            "Errore durante il reimpostazione della password.";
+          submissionStatus.style.color = "red";
+          submissionStatus.style.display = "block";
+        });
     }
   });
 
@@ -120,6 +156,27 @@ document.addEventListener("DOMContentLoaded", function () {
     (password.match(/\d/g) || []).length >= 2
       ? numbersReq.classList.add("fulfilled")
       : numbersReq.classList.remove("fulfilled");
+  }
+  // Update password strength indicator
+  function updatePasswordStrength(password) {
+    const requirements = document.querySelectorAll(".requirement.fulfilled");
+
+    if (password.length === 0) {
+      passwordStrengthMeter.textContent = "";
+      passwordStrengthMeter.className = "password-strength-meter";
+      return;
+    }
+
+    if (requirements.length === 4) {
+      passwordStrengthMeter.textContent = "Password: Forte";
+      passwordStrengthMeter.className = "password-strength-meter strong";
+    } else if (requirements.length >= 2) {
+      passwordStrengthMeter.textContent = "Password: Media";
+      passwordStrengthMeter.className = "password-strength-meter medium";
+    } else {
+      passwordStrengthMeter.textContent = "Password: Debole";
+      passwordStrengthMeter.className = "password-strength-meter weak";
+    }
   }
 
   // Funzione per mostrare un errore

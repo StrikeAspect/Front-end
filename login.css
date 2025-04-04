@@ -155,3 +155,16 @@ a:hover {
 input[type="password"] {
   padding-right: 40px;
 }
+.submission-status {
+  margin-top: 10px;
+  font-size: 14px;
+  display: none;
+}
+
+.submission-status.success {
+  color: green;
+}
+
+.submission-status.error {
+  color: red;
+}
