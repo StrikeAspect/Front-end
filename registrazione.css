@@ -1,15 +1,15 @@
 /* Body styling */
 body {
   font-family: Arial, sans-serif;
-  background-color: #d8f3dc; /* Background color */
-  color: #081c15; /* Font color */
+  background-color: #d8f3dc;
+  color: #081c15;
   margin: 0;
-  padding: 20px 0; /* Add vertical padding to prevent touching the top and bottom */
+  padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Ensure the body takes the full height of the viewport */
-  box-sizing: border-box; /* Include padding in height calculations */
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 /* Registration container */
@@ -17,11 +17,11 @@ body {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px; /* Adjust padding for better spacing */
-  width: 100%;
-  max-width: 500px; /* Increased width */
-  margin: auto; /* Center horizontally */
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  padding: 20px; /* Reduced padding for smaller screens */
+  width: 90%; /* Use percentage for width */
+  max-width: 500px;
+  margin: auto;
+  box-sizing: border-box;
 }
 
 /* Add logo styling */
@@ -40,13 +40,13 @@ body {
   text-align: center;
   margin-bottom: 20px;
   color: #081c15;
-  font-size: 24px; /* Ensure consistent heading size */
+  font-size: 24px;
 }
 
 /* Form group styling */
 .form-group {
   margin-bottom: 15px;
-  text-align: left; /* Ensure labels and inputs are aligned to the left */
+  text-align: left;
   position: relative;
 }
 
@@ -69,12 +69,12 @@ body {
   font-size: 14px;
   color: #081c15;
   background-color: #f9f9f9;
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  box-sizing: border-box;
 }
 
 /* Add space under password field */
 .form-group input[type="password"] {
-  margin-bottom: 10px; /* Additional space under password field */
+  margin-bottom: 10px;
 }
 
 /* Input focus styling */
@@ -88,29 +88,29 @@ body {
 
 /* Checkbox styling */
 .form-group.checkbox {
-  display: flex; /* Arrange items in a row */
-  align-items: center; /* Center vertically all items */
-  gap: 5px; /* Uniform space between items */
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* Checkbox input */
 .form-group.checkbox input[type="checkbox"] {
-  margin: 0; /* Remove extra margins */
+  margin: 0;
 }
 
 /* Checkbox label */
 .form-group.checkbox label {
   font-size: 14px;
   color: #081c15;
-  margin: 0; /* Remove extra margins */
+  margin: 0;
 }
 
 /* Error message styling for checkbox */
 .form-group.checkbox .error-message {
   font-size: 12px;
   color: #f44336;
-  margin: 0; /* Remove extra margins */
-  line-height: 1.4; /* Adjust line height to align with text */
+  margin: 0;
+  line-height: 1.4;
 }
 
 /* Links */
@@ -128,7 +128,7 @@ body {
 button[type="submit"] {
   width: 100%;
   padding: 10px 15px;
-  font-size: 16px; /* Ensure consistent font size */
+  font-size: 16px;
   font-weight: bold;
   color: #ffffff;
   background-color: #52b788;
@@ -155,13 +155,13 @@ button[type="submit"]:hover {
   font-size: 14px;
   margin: 3px 0;
   color: #666;
-  opacity: 0.5; /* Less opacity for unfulfilled requirements */
+  opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
 .requirement.fulfilled {
   color: #4caf50;
-  opacity: 1; /* Fully visible when fulfilled */
+  opacity: 1;
 }
 
 /* Turnstile */
@@ -187,8 +187,8 @@ button[type="submit"]:hover {
 
 .password-toggle {
   position: absolute;
-  right: 2px; /* Adjust these values for better positioning */
-  top: 28px; /* osition relative to label + input */
+  right: 2px;
+  top: 28px;
   transform: none;
   background: none;
   border: none;
@@ -227,4 +227,30 @@ a {
 a:hover {
   color: #40916c;
   text-decoration: underline;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 480px) {
+  body {
+    padding: 10px 0; /* Reduce padding on small screens */
+  }
+
+  .registration-container {
+    padding: 15px; /* Further reduce padding */
+    width: 95%; /* Take up more width on small screens */
+  }
+
+  .registration-container h2 {
+    font-size: 20px; /* Smaller heading */
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    font-size: 13px; /* Smaller font size */
+  }
+
+  button[type="submit"] {
+    font-size: 14px; /* Smaller button font */
+  }
 }

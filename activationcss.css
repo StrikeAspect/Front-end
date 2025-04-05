@@ -5,21 +5,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height for responsiveness */
   margin: 0;
+  padding: 20px 0; /* Add padding for spacing */
+  box-sizing: border-box;
 }
 
 .activation-container {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  padding: 20px; /* Reduced padding for smaller screens */
   text-align: center;
   position: relative;
   display: flex; /* Add flex display */
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
+  width: 90%; /* Use percentage for width */
+  max-width: 400px;
+  margin: auto;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -46,6 +52,7 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 20px; /* Add margin to separate from the paragraph */
+  width: 100%;
 }
 
 button:hover {
@@ -73,4 +80,28 @@ button:hover {
   transform: translate(-50%, -50%);
   font-size: 18px;
   color: #081c15;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 480px) {
+  body {
+    padding: 10px 0; /* Reduce padding on small screens */
+  }
+
+  .activation-container {
+    padding: 15px; /* Further reduce padding */
+    width: 95%; /* Take up more width on small screens */
+  }
+
+  h2 {
+    font-size: 20px; /* Smaller heading */
+  }
+
+  p {
+    font-size: 16px; /* Smaller paragraph font */
+  }
+
+  button {
+    font-size: 14px; /* Smaller button font */
+  }
 }

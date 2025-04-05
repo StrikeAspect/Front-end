@@ -17,8 +17,8 @@ body {
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 100%;
+  padding: 20px; /* Reduced padding for smaller screens */
+  width: 90%; /* Use percentage for width */
   max-width: 500px;
   margin: auto;
   box-sizing: border-box;
@@ -172,7 +172,7 @@ select:focus {
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   max-width: 400px;
-  width: 90%;
+  width: 90%; /* Use percentage for width */
   position: relative;
 }
 
@@ -226,4 +226,40 @@ select:focus {
   color: #4caf50; /* Green color for success */
   margin-top: 10px;
   display: block;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 480px) {
+  body {
+    padding: 10px 0; /* Reduce padding on small screens */
+  }
+
+  .container {
+    padding: 15px; /* Further reduce padding */
+    width: 95%; /* Take up more width on small screens */
+  }
+
+  .header h2 {
+    font-size: 16px; /* Smaller heading */
+  }
+
+  .header img {
+    width: 50px;
+    height: 50px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select {
+    font-size: 13px; /* Smaller font size */
+  }
+
+  .change-btn {
+    font-size: 14px; /* Smaller button font */
+  }
+
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+  }
 }

@@ -23,8 +23,8 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 100%;
+    padding: 20px; /* Reduced padding for smaller screens */
+    width: 90%; /* Use percentage for width */
     max-width: 400px; /* Match other forms */
     box-sizing: border-box;
 }
@@ -115,6 +115,26 @@ text-align: center;
     font-size: 12px;
     margin-top: 5px;
     display: none;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px; /* Further reduce padding */
+    width: 95%; /* Take up more width on small screens */
+  }
+
+  h1 {
+    font-size: 20px; /* Smaller heading */
+  }
+
+  input[type="text"] {
+    font-size: 13px; /* Smaller font size */
+  }
+
+  button {
+    font-size: 14px; /* Smaller button font */
+  }
 }
     </style>
 </head>

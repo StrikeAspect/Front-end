@@ -16,10 +16,10 @@ body {
   background-color: white;
   color: #081c15;
   font-weight: bold;
-  padding: 30px;
+  padding: 20px; /* Reduced padding for smaller screens */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 90%; /* Use percentage for width */
   max-width: 400px;
   margin: auto;
 }
@@ -31,7 +31,7 @@ body {
 
 .logo {
   max-width: 50px; /* Smaller size */
-  max-height:50px;
+  max-height: 50px;
   height: auto;
   object-fit: contain; /* Maintains aspect ratio */
 }
@@ -97,8 +97,8 @@ button:hover {
 /* Password toggle - consolidated styles */
 button.password-toggle {
   position: absolute;
-  right: 2px; /* Adjust these values for better positioning */
-  top: 28px; /* osition relative to label + input */
+  right: 2px;
+  top: 28px;
   transform: none;
   background: none;
   border: none;
@@ -125,7 +125,7 @@ button.password-toggle.visible {
   color: #4285f4;
 }
 
-/*Make sure the icon displays properly */
+/* Make sure the icon displays properly */
 button.password-toggle i {
   display: inline-block;
   line-height: 1;
@@ -167,4 +167,24 @@ input[type="password"] {
 
 .submission-status.error {
   color: red;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 15px; /* Further reduce padding */
+    width: 95%; /* Take up more width on small screens */
+  }
+
+  h2 {
+    font-size: 20px; /* Smaller heading */
+  }
+
+  input {
+    font-size: 13px; /* Smaller font size */
+  }
+
+  button {
+    font-size: 14px; /* Smaller button font */
+  }
 }
